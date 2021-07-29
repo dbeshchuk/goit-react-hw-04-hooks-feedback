@@ -1,23 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const FeedbackOptions = ({ option, onLeaveFeedback }) => {
+const FeedbackOptions = ({ onGoodClick, onNeutralClick, onBadClick }) => {
   return (
     <ul className="feedback-list">
-      {option.map((value) => (
-        <li key={value}>
-          <button onClick={onLeaveFeedback} data-value={value}>
-            {value}
-          </button>
-        </li>
-      ))}
+      <li>
+        <button onClick={onGoodClick}>Good</button>
+      </li>
+      <li>
+        <button onClick={onNeutralClick}>Neutral</button>
+      </li>
+      <li>
+        <button onClick={onBadClick}>Bad</button>
+      </li>
     </ul>
   );
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
-  onLeaveFeedback: PropTypes.func.isRequired,
+  onGoodClick: PropTypes.func.isRequired,
+  onNeutralClick: PropTypes.func.isRequired,
+  onBadClick: PropTypes.func.isRequired,
 };
 
 export default FeedbackOptions;
